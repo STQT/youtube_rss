@@ -7,7 +7,7 @@ import telebot
 from apscheduler.schedulers.background import BackgroundScheduler
 from telebot.types import Message
 
-from config import BOT_TOKEN, USER_ID, YOUTUBE_RSS_URL, BOT_DEBUG
+from config import BOT_TOKEN, USER_ID, YOUTUBE_RSS_URL, BOT_DEBUG, CRON_TASK_INTERVAL_MINUTES
 from database import update_new_obj, delete_obj
 from utils import validate_channel, extract_channel_id, get_all_urls_from_rss, get_all_new_links
 
@@ -75,7 +75,7 @@ def handle_specific_user_message(m: Message):
 sched = BackgroundScheduler()
 
 # Добавление задачи в планировщик (выполнение каждые 6 секунд)
-sched.add_job(my_interval_job, trigger="interval", minutes=30)
+sched.add_job(my_interval_job, trigger="interval", minutes=int(CRON_TASK_INTERVAL_MINUTES))
 sched.start()
 
 

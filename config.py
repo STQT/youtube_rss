@@ -10,6 +10,7 @@ BOT_DEBUG = os.getenv("BOT_DEBUG", default=False)
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 USER_ID = os.getenv("USER_ID")
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
+CRON_TASK_INTERVAL_MINUTES = os.getenv("CRON_TASK_INTERVAL_MINUTES")
 if BOT_TOKEN is False:
     import sentry_sdk
 
